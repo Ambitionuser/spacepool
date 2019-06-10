@@ -1,6 +1,5 @@
 package javaarray;
 
-import org.junit.Test;
 
 /**
  * 1.定义一个函数，获取某个数组中的最小值
