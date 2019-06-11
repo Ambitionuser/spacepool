@@ -1,6 +1,5 @@
 package scalacollection
 
-import scala.reflect.internal.util.HashSet
 
 object CollectionDemo extends App {
   override def main(args: Array[String]): Unit = {

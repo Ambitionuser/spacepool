@@ -29,5 +29,13 @@ object FunDemo {
   val fun1=(x:Int)=>x*tmp
 
 
+  //this
+
+  var id=0
+  def fun2(id:Int)={
+    this.id=id
+  }
+
+
 
 }
