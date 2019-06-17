@@ -12,6 +12,14 @@ object CollectionDemo extends App {
     //元祖(固定长度，不同类型)
     val tuple1=Tuple3(1,2,4)
 
+    //打印
+    list.foreach(x=>{
+      println(x)
+    })
+    for (x <- list){
+      println("和3比较大小，小的输出3，大的输出本身"+x.max(3))
+    }
+
   }
 
 }
