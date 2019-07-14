@@ -1,5 +1,6 @@
 package com.it.controller;
 
+import com.alibaba.fastjson.JSONArray;
 import com.it.domain.MmsType;
 import com.it.service.MmsTypeService;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,9 +18,9 @@ public class MmsTypeController {
 
 
     @RequestMapping("/{id}")
-    public List<MmsType> getMmsList(@PathVariable String id){
+    public String getMmsList(@PathVariable String id){
         List<MmsType> mmsTypeList = mmsTypeService.getMmsTypeList(id);
-
-        return mmsTypeList;
+        String json = JSONArray.toJSONString(mmsTypeList);
+        return json;
     }
 }
