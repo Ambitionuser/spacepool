@@ -52,6 +52,7 @@ public class CollectionDemo {
             System.out.println(entry.getKey()+"="+entry.getValue());
         }
 
+
         Set<Map.Entry<String, Object>> entries = hashMap.entrySet();
         Iterator<Map.Entry<String, Object>> map = entries.iterator();
         while (map.hasNext()){
