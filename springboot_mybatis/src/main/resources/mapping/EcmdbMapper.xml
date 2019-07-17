@@ -8,20 +8,40 @@
         <result column="value" property="value" jdbcType="VARCHAR" />
         <result column="resultcode" property="resultcode" jdbcType="VARCHAR" />
     </resultMap>
-    <sql id="Column_List" >
+    <sql id="Base_Column_List" >
         id, value, resultcode
     </sql>
 
-    <!-- 插入更新 -->
-    <!--<update id="updateInterList" parameterType="com.it.domain.MmsInter" >-->
-        <!--UPDATE-->
-        <!--mms_inter-->
-        <!--SET-->
-        <!--<if test="value != null">value = #{value},</if>-->
-        <!--<if test="resultcode != null">resultcode = #{resultcode}</if>-->
-        <!--WHERE-->
-        <!--id = #{id}-->
-    <!--</update>-->
+    <!--批量增加测试-->
+    <!--<insert id="ecmdbInterList" parameterType="com.it.domain.MmsInter">-->
+        <!--insert into mms_inter-->
+        <!--(-->
+        <!--<include refid="Base_Column_List"/>-->
+        <!--)-->
+        <!--VALUES-->
+        <!--<foreach collection="list" item="item" index="index" separator=",">-->
+            <!--(-->
+            <!--#{item.id,jdbcType=INTEGER},-->
+            <!--#{item.value,jdbcType=VARCHAR},-->
+            <!--#{item.resultcode,jdbcType=VARCHAR},-->
+            <!--)-->
+        <!--</foreach>-->
+    <!--</insert>-->
+
+    <insert id="ecmdbInterList" parameterType="com.it.domain.MmsInter">
+        insert into mms_inter(id,value,resultcode) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.userName},
+            #{item.value},
+            #{item.resultcode},
+            )
+        </foreach>
+    </insert>
+
+
+
+
+
 
     <insert id="updateInterList" parameterType="com.it.domain.MmsInter">
         INSERT into mms_inter (
