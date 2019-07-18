@@ -16,7 +16,11 @@ public class MmsTypeController {
     @Resource
     MmsTypeService mmsTypeService;
 
-
+    /**
+     * 根据id查询数据
+     * @param id
+     * @return
+     */
     @RequestMapping("/{id}")
     public String getMmsList(@PathVariable String id){
         List<MmsType> mmsTypeList = mmsTypeService.getMmsTypeList(id);

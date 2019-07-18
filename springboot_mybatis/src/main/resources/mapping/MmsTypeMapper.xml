@@ -10,11 +10,6 @@
     <sql id="Column_List" >
         id, name, status
     </sql>
-  <!--  <select id="getMmsTypeList" resultMap="ResultMap" parameterType="java.lang.Integer" >
-        select
-        <include refid="Column_List" />
-        from mms_type
-    </select>-->
 
 
     <!-- 查询 -->

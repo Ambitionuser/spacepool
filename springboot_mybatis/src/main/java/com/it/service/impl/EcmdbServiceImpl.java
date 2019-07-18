@@ -3,6 +3,7 @@ package com.it.service.impl;
 import com.it.dao.EcmdbMapper;
 import com.it.domain.MmsInter;
 import com.it.service.EcmdbService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -11,8 +12,9 @@ import java.util.List;
 
 @Service
 public class EcmdbServiceImpl implements EcmdbService{
-    @Resource
+    @Autowired
     EcmdbMapper ecmdbMapper;
+
 
     @Override
     public void updateInterList(MmsInter mmsInter) {
@@ -20,7 +22,7 @@ public class EcmdbServiceImpl implements EcmdbService{
     }
 
     @Override
-    public void ecmdbInterList(List<MmsInter> mmsInters) {
-        ecmdbMapper.ecmdbInterList(mmsInters);
+    public void insertInterList(List<MmsInter> mmsInters) {
+        ecmdbMapper.insertInterList(mmsInters);
     }
 }

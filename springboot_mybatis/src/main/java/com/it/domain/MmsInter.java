@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class MmsInter {
-    private int id;
+    private String id;
     private String value;
     private String resultcode;
 

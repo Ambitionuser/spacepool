@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface EcmdbService {
     void updateInterList(MmsInter mmsInter);
-    void ecmdbInterList(List<MmsInter> mmsInters);
+    void insertInterList(List<MmsInter> mmsInters);
 }

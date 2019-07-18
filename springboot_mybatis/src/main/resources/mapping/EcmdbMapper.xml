@@ -12,37 +12,36 @@
         id, value, resultcode
     </sql>
 
-    <!--批量增加测试-->
-    <!--<insert id="ecmdbInterList" parameterType="com.it.domain.MmsInter">-->
-        <!--insert into mms_inter-->
-        <!--(-->
-        <!--<include refid="Base_Column_List"/>-->
-        <!--)-->
-        <!--VALUES-->
-        <!--<foreach collection="list" item="item" index="index" separator=",">-->
-            <!--(-->
-            <!--#{item.id,jdbcType=INTEGER},-->
-            <!--#{item.value,jdbcType=VARCHAR},-->
-            <!--#{item.resultcode,jdbcType=VARCHAR},-->
-            <!--)-->
-        <!--</foreach>-->
-    <!--</insert>-->
-
-    <insert id="ecmdbInterList" parameterType="com.it.domain.MmsInter">
+    <!--批量增加 但是有主键无法插入-->
+    <insert id="insertInterList" parameterType="java.util.List"  useGeneratedKeys="true">
+        <selectKey resultType="String" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
         insert into mms_inter(id,value,resultcode) values
-        <foreach collection="list" item="item" index="index" separator=",">
-            (#{item.userName},
-            #{item.value},
-            #{item.resultcode},
+        <foreach collection="mmsInters" item="item" index="index" separator=",">
+            (#{item.id,jdbcType=VARCHAR},
+            #{item.value,jdbcType=VARCHAR},
+            #{item.resultcode,jdbcType=VARCHAR}
             )
         </foreach>
     </insert>
 
 
+    <!--<insert id="insertInterList" parameterType="java.util.List">-->
+        <!--insert into mms_inter(id,value,resultcode) values-->
+        <!--<foreach collection="mmsInters" item="item" index="index" separator=",">-->
+            <!--(#{item.id,jdbcType=VARCHAR},-->
+            <!--#{item.value,jdbcType=VARCHAR},-->
+            <!--#{item.resultcode,jdbcType=VARCHAR}-->
+            <!--)-->
+        <!--</foreach>-->
+    <!--</insert>-->
 
 
 
 
+    <!--插入更新-->
     <insert id="updateInterList" parameterType="com.it.domain.MmsInter">
         INSERT into mms_inter (
         id,
