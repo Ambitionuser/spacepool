@@ -8,17 +8,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class EhcacheController {
 
-    @Test
-    public void getEhcache(){
-        System.out.println("开始创建缓存");
-        int b=9;
-        int ehcacheTest = getEhcacheTest(b);
-        System.out.println(ehcacheTest);
-
-        System.out.println("第一次使用缓存");
-        int ehcacheTest1 = getEhcacheTest(b);
-        System.out.println(ehcacheTest1);
-    }
+//    @Test
+//    public void getEhcache(){
+//        System.out.println("开始创建缓存");
+//        int b=9;
+//        int ehcacheTest = getEhcacheTest(b);
+//        System.out.println(ehcacheTest);
+//
+//        System.out.println("第一次使用缓存");
+//        int ehcacheTest1 = getEhcacheTest(b);
+//        System.out.println(ehcacheTest1);
+//    }
 
 
     /**
@@ -34,13 +34,13 @@ public class EhcacheController {
      * condition="#userId.length < 32"
      * @return
      */
-    @Cacheable(value ="imoc",key ="#b")
-    public int getEhcacheTest(int b){
-        System.out.println("开始使用缓存");
-        int a=8;
-        int c=a+b;
-        System.out.println("计算结束");
-        return c;
-
-    }
+//    @Cacheable(value ="imoc",key ="#b")
+//    public int getEhcacheTest(int b){
+//        System.out.println("开始使用缓存");
+//        int a=8;
+//        int c=a+b;
+//        System.out.println("计算结束");
+//        return c;
+//
+//    }
 }

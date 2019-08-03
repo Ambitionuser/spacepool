@@ -1,67 +1,73 @@
 package com.it.service.impl;
 
-import com.it.dao.MongodbMapper;
 import com.it.domain.MongodbUser;
 import com.it.service.MongodbService;
-import com.mongodb.client.result.UpdateResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 import java.util.List;
+import java.util.regex.Pattern;
 
 
 @Service
 public class MongodbServiceImpl implements MongodbService{
-    @Resource
-    MongodbMapper mongodbMapper;
 
-    @Resource
-    MongoTemplate mongoTemplate;
+    @Autowired
+    private MongoTemplate mongoTemplate;
 
     @Override
-    public List<MongodbUser> selectUserList(String name) {
-        return mongodbMapper.selectUserList(name);
-    }
-
-    @Override
-    public List<MongodbUser> selectUserAllList() {
-        return mongodbMapper.selectUserAllList();
-    }
-
-    @Override
-    public void saveUser(MongodbUser mongodbUser) {
+    public void save(MongodbUser mongodbUser) {
         mongoTemplate.save(mongodbUser);
     }
 
-   /* @Override
-    public void removeUser(Long id) {
-        Query query = new Query(Criteria.where("id").is(id));//查找其id字段的值与传入参数id相等的数据
-        mongoTemplate.remove(query,User.class);
+    @Override
+    public void update(MongodbUser mongodbUser) {
+        //创建更新条件
+        Query query = new Query();
+        Criteria criteria = Criteria.where("id").is(mongodbUser.getId());
+        query.addCriteria(criteria);
+
+        //创建更新对象
+        Update update = new Update();
+        update.set("name", mongodbUser.getName());
+        update.set("age", mongodbUser.getAge());
+
+        //更新所有符合条件的记录
+        mongoTemplate.updateMulti(query, update, MongodbUser.class);
     }
 
     @Override
-    public User findUserByName(String name) {
-        Query query = new Query(Criteria.where("name").is(name));
-        User user = mongoTemplate.findOne(query,User.class);
-        return user;
+    public void deleteById(Long id) {
+        //创建删除条件
+        Query query = new Query();
+        Criteria criteria = Criteria.where("id").is(id);
+        query.addCriteria(criteria);
+        mongoTemplate.remove(query, MongodbUser.class);
     }
 
     @Override
-    public int updateUser(User user) {
-        Query query = new Query(Criteria.where("id").is(user.getId()));
-        Update update = new Update().set("name",user.getName()).set("password",user.getPassword());
-        //更新查询返回的结果集的第一条数据
-        UpdateResult result = mongoTemplate.updateFirst(query,update,User.class);
-        //更新查询到的所有结果集
-        //UpdateResult all_result = mongoTemplate.updateMulti(query,update,User.class);
-        if(result!= null)
-            return (int) result.getModifiedCount();
-        else
-            return 0;
-    }*/
+    public MongodbUser findById(Long id) {
+        Query query = new Query();
+        Criteria criteria = Criteria.where("id").is(id);
+        query.addCriteria(criteria);
+        return mongoTemplate.findOne(query, MongodbUser.class);
+    }
 
+    @Override
+    public List<MongodbUser> findAll() {
+        return mongoTemplate.findAll(MongodbUser.class);
+    }
 
+    @Override
+    public List<MongodbUser> findByName(String name) {
+        Query query = new Query();
+        //模糊查询，不区分大小写
+        Pattern pattern = Pattern.compile("^.*" + name + ".*$", Pattern.CASE_INSENSITIVE);
+        Criteria criteria = Criteria.where("name").regex(pattern);
+        query.addCriteria(criteria);
+        return mongoTemplate.find(query, MongodbUser.class);
+    }
 }

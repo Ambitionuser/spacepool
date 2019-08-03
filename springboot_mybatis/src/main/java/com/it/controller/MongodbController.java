@@ -17,17 +17,18 @@ public class MongodbController {
 
 
     @GetMapping("/userlist")
-    public List<MongodbUser> selectUserList(){
-        List<MongodbUser> mongodbUsers = mongodbService.selectUserAllList();
+    public List<MongodbUser> findAll(){
+        List<MongodbUser> mongodbUsers = mongodbService.findAll();
         return mongodbUsers;
     }
 
     @RequestMapping(value = "/save")
     public String doSave() {
-        MongodbUser user = new MongodbUser();
-        user.setName("chenyanning");
-        user.setAge(30);
-        mongodbService.saveUser(user);
+        MongodbUser mongodbUser = new MongodbUser();
+        mongodbUser.setId("2");
+        mongodbUser.setName("chenyanning");
+        mongodbUser.setAge(30);
+        mongodbService.save(mongodbUser);
         return "success";
     }
 

@@ -5,9 +5,16 @@ import com.it.domain.MongodbUser;
 import java.util.List;
 
 public interface MongodbService {
-    List<MongodbUser> selectUserList(String name);
 
-    List<MongodbUser> selectUserAllList();
+    void save(MongodbUser mongodbUser);
 
-    void saveUser(MongodbUser mongodbUser);
+    void update(MongodbUser mongodbUser);
+
+    void deleteById(Long id);
+
+    MongodbUser findById(Long id);
+
+    List<MongodbUser> findAll();
+
+    List<MongodbUser> findByName(String name);
 }
