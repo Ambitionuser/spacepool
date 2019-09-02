@@ -60,7 +60,7 @@ public class TeacherSource {
      * @throws Exception
      */
     @Bean(name = "teacherSqlSessionTemplate")
-    public SqlSessionTemplate teachertSqlSessionTemplate(@Qualifier("teacherDataSource") SqlSessionFactory sqlSessionFactory) throws Exception {
+    public SqlSessionTemplate teachertSqlSessionTemplate(@Qualifier("teacherSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 
