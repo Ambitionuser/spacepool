@@ -1,8 +1,4 @@
-<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3
-          http://maven.apache.org/xsd/assembly-1.1.3.xsd">
-
+<assembly>
     <id>1.0.0</id>
     <formats>
         <format>tar.gz</format>
@@ -10,51 +6,51 @@
     <includeBaseDirectory>true</includeBaseDirectory>
 
     <fileSets>
-        <fileSet>
-            <directory>bin</directory>
-            <outputDirectory>bin</outputDirectory>
-            <fileMode>0755</fileMode>
-            <includes>
-                <include>**/*.sh</include>
-            </includes>
-            <fileMode>0755</fileMode>
-            <lineEnding>unix</lineEnding>
-        </fileSet>
+        <!--<fileSet>-->
+            <!--<directory>bin</directory>-->
+            <!--<outputDirectory>bin</outputDirectory>-->
+            <!--<fileMode>0755</fileMode>-->
+            <!--<includes>-->
+                <!--<include>**/*.sh</include>-->
+            <!--</includes>-->
+            <!--<fileMode>0755</fileMode>-->
+            <!--<lineEnding>unix</lineEnding>-->
+        <!--</fileSet>-->
 
-        <fileSet>
-            <directory>src/main/resource</directory>
-            <outputDirectory>conf</outputDirectory>
-            <fileMode>0644</fileMode>
-            <excludes>
-                <exclude>**/*.class</exclude>
-            </excludes>
-        </fileSet>
+        <!--<fileSet>-->
+            <!--<directory>src/main/resource</directory>-->
+            <!--<outputDirectory>conf</outputDirectory>-->
+            <!--<fileMode>0644</fileMode>-->
+            <!--<excludes>-->
+                <!--<exclude>**/*.class</exclude>-->
+            <!--</excludes>-->
+        <!--</fileSet>-->
 
-        <fileSet>
-        <directory>logs</directory>
-        <outputDirectory>logs</outputDirectory>
-        <fileMode>0644</fileMode>
-        <excludes>
-            <exclude>**/*</exclude>
-        </excludes>
-        </fileSet>
+        <!--<fileSet>-->
+            <!--<directory>logs</directory>-->
+            <!--<outputDirectory>logs</outputDirectory>-->
+            <!--<fileMode>0644</fileMode>-->
+            <!--<excludes>-->
+                <!--<exclude>**/*</exclude>-->
+            <!--</excludes>-->
+        <!--</fileSet>-->
 
-        <fileSet>
-            <directory>tools</directory>
-            <outputDirectory>tools</outputDirectory>
-            <fileMode>0644</fileMode>
-        </fileSet>
+        <!--<fileSet>-->
+            <!--<directory>tools</directory>-->
+            <!--<outputDirectory>tools</outputDirectory>-->
+            <!--<fileMode>0644</fileMode>-->
+        <!--</fileSet>-->
     </fileSets>
 
     <files>
         <file>
-            <source>ReadMe.txt</source>
+            <source>cloudservice/ReadMe.txt</source>
             <outputDirectory>/</outputDirectory>
         </file>
-        <file>
-            <source>install.sh</source>
-            <outputDirectory>/</outputDirectory>
-        </file>
+        <!--<file>-->
+            <!--<source>install.sh</source>-->
+            <!--<outputDirectory>/</outputDirectory>-->
+        <!--</file>-->
     </files>
 
     <dependencySets>

@@ -1,0 +1,7 @@
+======================mybatis-generaor插件================================
+1.进入到G:\apache-maven-3.3.9\mybatis-generator-lombok-plugin-master
+2.然后执行命令：mvn clean install
+3.若是无命令，请环境变量配置mvn
+3.generatorConfig.xml中必须有配置实体，xml，dao
+
+======================assembly插件================================
