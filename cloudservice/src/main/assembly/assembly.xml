@@ -17,14 +17,14 @@
             <!--<lineEnding>unix</lineEnding>-->
         <!--</fileSet>-->
 
-        <!--<fileSet>-->
-            <!--<directory>src/main/resource</directory>-->
-            <!--<outputDirectory>conf</outputDirectory>-->
-            <!--<fileMode>0644</fileMode>-->
-            <!--<excludes>-->
-                <!--<exclude>**/*.class</exclude>-->
-            <!--</excludes>-->
-        <!--</fileSet>-->
+        <fileSet>
+            <directory>src/main/resources</directory>
+            <outputDirectory>conf</outputDirectory>
+            <fileMode>0644</fileMode>
+            <excludes>
+                <exclude>**/*.class</exclude>
+            </excludes>
+        </fileSet>
 
         <!--<fileSet>-->
             <!--<directory>logs</directory>-->
@@ -44,7 +44,7 @@
 
     <files>
         <file>
-            <source>cloudservice/ReadMe.txt</source>
+            <source>ReadMe.txt</source>
             <outputDirectory>/</outputDirectory>
         </file>
         <!--<file>-->

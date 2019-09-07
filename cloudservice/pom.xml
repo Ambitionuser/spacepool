@@ -216,7 +216,8 @@
                     </dependency>
                 </dependencies>
             </plugin>
-            <!--编译-->
+
+            <!--编译放入lib目录-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -239,7 +240,7 @@
                     <finalName>cloud-service</finalName>
                     <appendAssemblyId>true</appendAssemblyId>
                     <descriptors>src/main/assembly/assembly.xml</descriptors>
-                    <outputDirectory>/../spacepool/cloudservice/tar</outputDirectory>
+                    <outputDirectory>${basedir}/../cloudservice/tar</outputDirectory>
                 </configuration>
                 <executions>
                     <execution>
