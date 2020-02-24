@@ -30,7 +30,7 @@
         <quartz.version>2.2.3</quartz.version>
         <junit.version>4.12</junit.version>
         <json.version>1.2.4</json.version>
-        <c3p0.version>0.9.5.2</c3p0.version>
+        <c3p0.version>0.9.5.4</c3p0.version>
 
         <swagger.version>2.5.0</swagger.version>
         <admin.ui.version>2.1.1</admin.ui.version>
